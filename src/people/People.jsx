@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-// import { bindActionCreators } from "redux";
 import _ from "lodash";
 
 class People extends Component {
@@ -32,16 +31,9 @@ class People extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { people: state.people.people, filterQuery: state.people.filterQuery };
-};
-
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators(
-//     {
-//       // ...
-//     },
-//     dispatch
-//   );
+const mapStateToProps = state => ({
+  people: state.people.people,
+  filterQuery: state.people.filterQuery
+});
 
 export default connect(mapStateToProps)(People);
