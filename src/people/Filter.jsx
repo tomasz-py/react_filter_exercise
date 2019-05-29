@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { setFilterQuery } from "../actions/people";
 
-// ...
-
 class Filter extends Component {
   static propTypes = {
     filterQuery: PropTypes.string

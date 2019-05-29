@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-
-// ...
+// import { bindActionCreators } from "redux";
+import _ from "lodash";
 
 class People extends Component {
   static propTypes = {
     people: PropTypes.array
   };
 
-  // ...
-
   renderList() {
-    let { people } = this.props;
+    let { people, filterQuery } = this.props;
+
+    if (filterQuery.length > 0) {
+      people = _.filter(people, function(item) {
+        return item.name.toUpperCase().includes(filterQuery.toUpperCase());
+      });
+    }
 
     return people.map(person => {
       return (
@@ -30,18 +33,15 @@ class People extends Component {
 }
 
 const mapStateToProps = state => {
-  return { people: state.people.people };
+  return { people: state.people.people, filterQuery: state.people.filterQuery };
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      // ...
-    },
-    dispatch
-  );
+// const mapDispatchToProps = dispatch =>
+//   bindActionCreators(
+//     {
+//       // ...
+//     },
+//     dispatch
+//   );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(People);
+export default connect(mapStateToProps)(People);
