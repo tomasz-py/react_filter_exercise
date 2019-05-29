@@ -22,9 +22,9 @@ class Filter extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { filterQuery: state.people.filterQuery };
-};
+const mapStateToProps = state => ({
+  filterQuery: state.people.filterQuery
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(

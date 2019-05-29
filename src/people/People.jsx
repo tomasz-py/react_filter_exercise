@@ -12,8 +12,8 @@ class People extends Component {
     let { people, filterQuery } = this.props;
 
     if (filterQuery.length > 0) {
-      people = _.filter(people, function(item) {
-        return item.name.toUpperCase().includes(filterQuery.toUpperCase());
+      people = _.filter(people, function(person) {
+        return new RegExp(filterQuery, "i").test(person.name);
       });
     }
 
